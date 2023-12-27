@@ -1,8 +1,7 @@
-import { View, Text,Button,TextInput,FlatList,TouchableWithoutFeedback,Keyboard } from "react-native";
+import { View, Text,Button,TextInput,FlatList,TouchableWithoutFeedback,Keyboard, StyleSheet } from "react-native";
 import { useState,useEffect } from "react";
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -105,14 +104,21 @@ export default function CurrListPage(){
 
     return(
     <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
-
-        <View>
+        <View style={styles.container}>
             {/* TODO subtitle */}
 
-            <Button
-                title="Add item"    
-                onPress={addItem}
-            />
+            {/* add item button  */}
+            <View >
+                <TouchableWithoutFeedback style={styles.addBtn}>
+                    <Button
+                        title="+"    
+                        onPress={addItem}
+                        color='tomato'
+                    />
+                </TouchableWithoutFeedback>
+            </View>
+            
+           
             {/* {renderItemList()} */}
             <FlatList
                 data={itemList}
@@ -171,13 +177,51 @@ export default function CurrListPage(){
                 keyExtractor={(item) => item.itemKey}
             />
 
-            <Text>Item Count: {quantitySum.toString()}</Text>
-            <Text>Tax:</Text>
-            <Text>Subtotal: {priceSum.toString()}</Text>
-            {/* TODO change page */}
             {/* TODO summary */}
+            <View style={styles.summaryBox}>
+                <Text style={styles.subtotal}>Subtotal: {priceSum.toString()}</Text>       
+                <Text style={styles.itemCount}>Item Count: {quantitySum.toString()}</Text>
+                <Text style={styles.tax}>Tax:</Text>      
+            </View>
+          
+            {/* TODO change page */}
+            
         </View>
     </TouchableWithoutFeedback>
 
     );
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+    },
+    addBtn:{
+        flex: 1,
+        width: 44,
+        height: 43,
+        backgroundColor: 'tomato',
+        alignContent:'flex-end',
+        borderRadius: 80,
+    },
+    summaryBox:{
+        width: '100%',
+        height: 63,
+        backgroundColor: 'tomato',
+        borderRadius: 80,
+    },
+    subtotal:{
+        textAlign: 'center',
+        color: '#fff'
+    },
+    itemCount:{
+        textAlign: 'center',
+        color: '#fff'
+    },
+    tax: {
+        textAlign: 'center',
+        color: '#fff'
+    }
+
+
+})
