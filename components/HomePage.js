@@ -1,4 +1,4 @@
-import { View, Text,Button,TextInput,FlatList, StyleSheet } from "react-native";
+import { View, Text, Button, TextInput, FlatList, StyleSheet, Pressable  } from "react-native";
 
 export default function HomePage(props){
     const {navigation}=props;
@@ -8,13 +8,19 @@ export default function HomePage(props){
                 Recently list
             </Text>
 
-            <View style={styles.btnStyle}>
-                <Button
-                    color={'tomato'}
-                    title='Create new list'
-                    onPress={() => navigation.navigate('Shopping List')}
-                />
-            </View>  
+            <Text style={styles.line}></Text>
+
+            {/* content */}
+            <View style={styles.content}>
+                {/* <Text>123</Text> */}
+            </View>
+
+            <Pressable 
+                style={styles.botBtn} 
+                onPress={() => navigation.navigate('Shopping List')}
+            >
+                <Text style={styles.botBtnTitle}>Create new list</Text>
+            </Pressable>
         </View>
     )
 }
@@ -22,20 +28,38 @@ export default function HomePage(props){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
+        backgroundColor: '#fff',
     },
     title:{
         position: 'absolute',
         left: 0,
         color: '#989898',
-        paddingTop: 20,
-        borderWidth: 1,
         borderBottomColor: '#fff',
+        paddingTop: 30,
+        paddingLeft: 30,
     },
-    btnStyle:{
-        flex: 1,
+    line:{
+        width: '85%',
+        height: 1,
+        marginTop: 55,
+        marginLeft: 50,
+        backgroundColor: '#B0B0B0',
+    },
+    content:{
+        flex: 4,
+    },
+    botBtn:{
         justifyContent: 'flex-end',
         width: '100%',
-        height: 600,
-        borderRadius: 50,
+        height: 63,
+        backgroundColor: 'tomato',
+        borderRadius: 80,
+    },
+    botBtnTitle:{
+        fontSize: 18,
+        paddingBottom: 20,
+        alignContent: 'center',
+        textAlign: 'center',
+        color: '#fff',
     }
 })

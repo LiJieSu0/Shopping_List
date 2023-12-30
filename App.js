@@ -26,13 +26,13 @@ export default function App() {
             <Stack.Screen name="Shopping List" component={CurrListPage}      
                               options={{
                                 headerTitle: (props) => <LogoTitle {...props} />,
-                                headerRight: () => (
-                                <Button
-                                  onPress={() => alert('This is a button!')}
-                                  title="Info"
-                                  color="#fff"
-                                />
-                                ),
+                                // headerRight: () => (
+                                // <Button
+                                //   onPress={() => alert('This is a button!')}
+                                //   title="Info"
+                                //   color="#fff"
+                                // />
+                                // ),
                               }} />
         </Stack.Navigator>
       </TouchableWithoutFeedback>
