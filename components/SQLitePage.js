@@ -2,8 +2,6 @@ import { View, Text,TextInput, Button } from "react-native";
 import * as SQLite from 'expo-sqlite';
 import { useState,useEffect } from "react";
 
-
-
 export default function SqlitePage(){
 
     const db=SQLite.openDatabase('test.db');
